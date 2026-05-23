@@ -1,0 +1,47 @@
+.app-shell {
+	min-height: 100vh;
+	padding: 40px 24px 64px;
+	display: grid;
+	gap: 32px;
+	background:
+		radial-gradient(
+			circle at top left,
+			rgba(178, 58, 72, 0.14),
+			transparent 28%
+		),
+		radial-gradient(
+			circle at top right,
+			rgba(32, 195, 240, 0.12),
+			transparent 24%
+		),
+		var(--bg);
+}
+
+.app-header {
+	max-width: 980px;
+	margin: 0 auto;
+	display: grid;
+	gap: 12px;
+}
+
+.eyebrow {
+	text-transform: uppercase;
+	letter-spacing: 0.18em;
+	font-size: 0.75rem;
+	color: var(--accent);
+}
+
+.lede {
+	max-width: 62ch;
+}
+
+.demo-panel {
+	max-width: 980px;
+	margin: 0 auto;
+	padding: 24px;
+	border: 1px solid var(--border);
+	border-radius: 20px;
+	background: rgba(255, 255, 255, 0.72);
+	box-shadow: var(--shadow);
+	backdrop-filter: blur(14px);
+}
