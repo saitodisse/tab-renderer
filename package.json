@@ -6,7 +6,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "tsc -b && vite build",
+    "build": "vite build && tsc -b tsconfig.build.json --force",
     "lint": "eslint .",
     "test": "vitest run",
     "test:watch": "vitest",
