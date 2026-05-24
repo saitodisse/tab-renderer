@@ -6,6 +6,20 @@
 	--tab-story-inset-border: #d4c8bc;
 }
 
+html[data-app-theme="light"] {
+	--tab-story-surface: #f5f0ea;
+	--tab-story-inset-bg: #ffffff;
+	--tab-story-inset-text: #1a121f;
+	--tab-story-inset-border: #d4c8bc;
+}
+
+html[data-app-theme="dark"] {
+	--tab-story-surface: #1a1512;
+	--tab-story-inset-bg: #2b231e;
+	--tab-story-inset-text: #f3ebe4;
+	--tab-story-inset-border: #4a3f37;
+}
+
 /* Dark: OS preference */
 @media (prefers-color-scheme: dark) {
 	:root {
