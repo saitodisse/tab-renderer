@@ -15,7 +15,7 @@
     "preview": "vite preview",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
-    "prepare": "npm run build"
+    "prepublishOnly": "npm run build"
   },
   "dependencies": {
     "@tonaljs/tonal": "^4.10.0"
@@ -65,8 +65,8 @@
     "jsdom": "^29.1.1",
     "motion": "^12.40.0",
     "playwright": "^1.60.0",
-    "react": "^19.2.14",
-    "react-dom": "^19.2.14",
+    "react": "19.2.6",
+    "react-dom": "19.2.6",
     "storybook": "^10.4.1",
     "typescript": "~6.0.2",
     "typescript-eslint": "^8.59.2",
