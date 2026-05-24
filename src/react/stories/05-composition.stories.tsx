@@ -19,7 +19,7 @@ type Story = StoryObj<typeof meta>;
 export const TabRootManual: Story = {
   name: "1. TabRoot + TabSection (composition)",
   render: () => (
-    <StoryPanel caption="TabRoot wraps the full tua-flor Song from transform(); you map every section to TabSection manually — the composable alternative to the styled Tab viewer.">
+    <StoryPanel caption="TabRoot wraps the full tua-flor ParsedTab from parseTab(); you map every section to TabSection manually — the composable alternative to the styled Tab viewer.">
       <StoryStepLabel>
         TabRoot → {tuaFlorSong.sections.length} × TabSection ·{" "}
         {tuaFlorSong.sections[0].lines.length} lines rendered

@@ -1,4 +1,4 @@
-import type { Line, Section, Song, Token } from "../core";
+import type { ParsedTab, ParsedTabLine, ParsedTabSection, ParsedTabToken } from "../core";
 import type { TabStyleConfig } from "../core/preparedTypes";
 import type { ReactNode } from "react";
 
@@ -9,27 +9,27 @@ export type {
 } from "../core/preparedTypes";
 
 export type TabRootProps = {
-  song: Song;
+  song: ParsedTab;
   children?: ReactNode;
   className?: string;
 };
 
 export type TabSectionProps = {
-  section: Section;
+  section: ParsedTabSection;
   index: number;
   children?: ReactNode;
   className?: string;
 };
 
 export type TabLineProps = {
-  line: Line;
+  line: ParsedTabLine;
   index: number;
   children?: ReactNode;
   className?: string;
 };
 
 export type TabTokenProps = {
-  token: Token;
+  token: ParsedTabToken;
   className?: string;
 };
 

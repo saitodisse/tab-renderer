@@ -22,7 +22,7 @@ type Story = StoryObj<typeof meta>;
 export const StyledViewer: Story = {
   name: "1. Tab (body → render)",
   render: (args) => (
-    <StoryPanel caption="Tab calls prepareSong(body) and renders the interleaved stream with CSS chord offsets. For the token AST path, compose Tab.Root + Tab.Section (see 05 Composition).">
+    <StoryPanel caption="Tab calls prepareSong(body) and renders the interleaved stream with CSS chord offsets. For the ParsedTab path, compose Tab.Root + Tab.Section (see 05 Composition).">
       <StoryStepLabel>Production viewer · full tua-flor fixture</StoryStepLabel>
       <Tab {...args} />
     </StoryPanel>

@@ -24,16 +24,16 @@ export const RawBody: Story = {
   name: "1. Raw body text",
   render: () => (
     <StoryPanel caption="Everything starts as a multiline string — the full tua-flor chord sheet, before any parsing.">
-      <StoryStepLabel>Input only — no transform()</StoryStepLabel>
+      <StoryStepLabel>Input only — no parseTab()</StoryStepLabel>
       <RawBodyPreview body={tuaFlorBody} />
     </StoryPanel>
   ),
 };
 
 export const Transform: Story = {
-  name: "2. transform(body) → Song",
+  name: "2. parseTab(body) → ParsedTab",
   render: () => (
-    <StoryPanel caption="The headless core turns the same body into an AST: Song → Section[] → Line[] → Token[].">
+    <StoryPanel caption="The headless core turns the same body into an AST: ParsedTab → ParsedTabSection[] → ParsedTabLine[] → ParsedTabToken[].">
       <StoryStepLabel>Summary counts, then full JSON</StoryStepLabel>
       <RawBodyPreview body={tuaFlorBody} />
       <AstSongSummary song={tuaFlorSong} />

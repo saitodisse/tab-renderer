@@ -1,5 +1,5 @@
 import type { ReactNode } from "react";
-import type { Song } from "../../core";
+import type { ParsedTab } from "../../core";
 import { countTokens } from "./story-tua-flor";
 
 export function StoryStepLabel({ children }: { children: ReactNode }) {
@@ -29,7 +29,7 @@ export function AstPreview({ value }: { value: unknown }) {
   return <pre className="tab-story-ast">{JSON.stringify(value, null, 2)}</pre>;
 }
 
-export function AstSongSummary({ song }: { song: Song }) {
+export function AstSongSummary({ song }: { song: ParsedTab }) {
   const lineCount = song.sections.reduce((n, s) => n + s.lines.length, 0);
   const tokenCount = countTokens(song);
   const titles = song.sections.map((s) => s.title ?? "(untitled)");

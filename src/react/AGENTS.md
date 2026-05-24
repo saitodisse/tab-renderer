@@ -11,11 +11,11 @@ The React layer renders the normalized AST exposed by the core.
   - `Tab.Line`
   - `Tab.Chord`
   - `Tab.Lyric`
-- `Tab` is the styled viewer (`prepareSong` + `TabStyleConfig`). Primitives remain headless for custom composition.
+- `Tab` is the styled viewer (`prepareSong` + `TabStyleConfig`). Primitives remain headless and consume `ParsedTab` for custom composition.
 
 ## Rules
 
-- Import transformation logic from `src/core/`, never duplicate parsing.
+- Import parsing and shared AST types from `src/core/`, never duplicate parsing.
 - Keep the wrapper and the primitives aligned with the exported public API.
 - Do not add app-specific styling assumptions or Vite template leftovers.
 - If a module intentionally mixes component exports and wrapper composition, keep the exception narrowly scoped.

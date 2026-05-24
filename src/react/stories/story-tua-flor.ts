@@ -1,19 +1,19 @@
-import { transform } from "../../core";
-import type { Line, Song } from "../../core";
+import { parseTab } from "../../core";
+import type { ParsedTab, ParsedTabLine } from "../../core";
 import { tuaFlorBody } from "../../test/stubs/tua-flor";
 
 export { tuaFlorBody };
 
-export const tuaFlorSong = transform(tuaFlorBody);
+export const tuaFlorSong = parseTab(tuaFlorBody);
 
 export const tuaFlorSection = tuaFlorSong.sections[0];
 
 /** Body with a section header so TabSection renders an &lt;h2&gt;. */
 export const tuaFlorTitledBody = `[Verse]\n${tuaFlorBody}`;
 
-export const tuaFlorTitledSong = transform(tuaFlorTitledBody);
+export const tuaFlorTitledSong = parseTab(tuaFlorTitledBody);
 
-export function countTokens(song: Song): number {
+export function countTokens(song: ParsedTab): number {
   return song.sections.reduce(
     (n, section) =>
       n + section.lines.reduce((m, line) => m + line.tokens.length, 0),
@@ -22,8 +22,8 @@ export function countTokens(song: Song): number {
 }
 
 export function findLine(
-  predicate: (line: Line, index: number) => boolean,
-): Line {
+  predicate: (line: ParsedTabLine, index: number) => boolean,
+): ParsedTabLine {
   const line = tuaFlorSection.lines.find(predicate);
   if (!line) {
     throw new Error("Expected line not found in tua-flor fixture");

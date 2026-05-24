@@ -27,10 +27,10 @@ The package exposes two public entrypoints:
 - Chords sit above lyrics via CSS (`position: relative`, `bottom`, negative `marginRight`) inside `white-space: pre-wrap`
 - `Tab` accepts `style?: Partial<TabStyleConfig>` (typography, colors, `displayMode`, `viewMode`, transpose, margins)
 
-**Token AST (headless + composable primitives)** — for custom UI or inspection:
+**Headless AST** — for custom UI or inspection:
 
-- `transform()` → `Song` → `Section` → `Line` → `ChordToken` \| `LyricToken` \| `SpaceToken`
-- Compose with `Tab.Root`, `Tab.Section`, `Tab.Line`, `Tab.Chord`, `Tab.Lyric` (not used by `Tab` itself)
+- `parseTab()` → `ParsedTab` → `ParsedTabSection` → `ParsedTabLine` → `ParsedTabToken`
+- Compose with `Tab.Root`, `Tab.Section`, `Tab.Line`, `Tab.Chord`, `Tab.Lyric`
 
 See [PRD 0002](./docs/prd/0002-styled-viewer-pipeline.md) and [RFC 0002](./docs/rfc/0002-interleaved-bars-and-tab-style-config.md).
 
@@ -66,16 +66,16 @@ const prepared = prepareSong({
 // prepared.sections[].barList — lyric fragments + chord items for render
 ```
 
-### Token AST (per-line tokens)
+### Headless AST (per-line tokens)
 
 ```ts
-import { transform } from "tab-renderer";
+import { parseTab } from "tab-renderer";
 
-const song = transform(body);
+const song = parseTab(body);
 // song.sections[].lines[].tokens
 ```
 
-Exported types include `PreparedSong`, `TabStyleConfig`, `DEFAULT_TAB_STYLE`, `BarsListItem`, and legacy `Song` / `Token` types.
+Exported types include `ParsedTab`, `ParsedTabSection`, `ParsedTabLine`, `ParsedTabToken`, `PreparedSong`, `TabStyleConfig`, `DEFAULT_TAB_STYLE`, and `BarsListItem`.
 
 ## React usage
 
@@ -100,13 +100,13 @@ export function Example() {
 }
 ```
 
-### Composable primitives (token AST)
+### Composable primitives (headless AST)
 
 ```tsx
-import { transform } from "tab-renderer";
+import { parseTab } from "tab-renderer";
 import { Tab } from "tab-renderer/react";
 
-const song = transform(body);
+const song = parseTab(body);
 
 <Tab.Root song={song}>
   {song.sections.map((section, i) => (
@@ -180,7 +180,7 @@ The demo site is published at [tab-renderer-react.vercel.app](https://tab-render
 
 ## Repository layout
 
-- `src/core/` — headless parser, transposer, `prepareSong`, legacy `transform`
+- `src/core/` — headless parser, transposer, `prepareSong`
 - `src/react/` — styled `Tab`, primitives, Storybook stories
 - `src/test/stubs/tua-flor.txt` — shared fixture for tests and stories
 - `src/stories/` — stock Vite Storybook template (not library API)
