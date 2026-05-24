@@ -32,18 +32,29 @@ export const defaultDarkStylingPreset: TabStyleConfig = {
   ...DEFAULT_TAB_STYLE,
 };
 
-export const onlyLyricsStylingPreset: TabStyleConfig = {
+const onlyLyricsStylingBase = {
   fontSize: 21,
   lineHeight: 0.06,
+  chordHeight: 0.07,
+  blockMarginRight: 0.575,
+  displayMode: "lyrics" as const,
+  viewMode: "o" as const,
+  transposeNumber: 0,
+  contentMarginRightPx: 0,
+};
+
+export const onlyLyricsLightStylingPreset: TabStyleConfig = {
+  ...onlyLyricsStylingBase,
+  chordColor: "#1d57f7",
+  lyricColor: "#1b2027",
+  backgroundColor: "#ffffff",
+};
+
+export const onlyLyricsDarkStylingPreset: TabStyleConfig = {
+  ...onlyLyricsStylingBase,
   chordColor: "#5884fe",
   lyricColor: "#d1dff5",
   backgroundColor: "#000000",
-  chordHeight: 0.07,
-  blockMarginRight: 0.6,
-  displayMode: "lyrics",
-  viewMode: "o",
-  transposeNumber: 0,
-  contentMarginRightPx: 0,
 };
 
 export function applyStylingPreset(preset: TabStyleConfig) {
@@ -70,8 +81,13 @@ export function handleStylingPresetAction(
     return "dark";
   }
 
-  if (path === "presets.applyOnlyLyrics") {
-    applyStylingPreset(onlyLyricsStylingPreset);
+  if (path === "presets.applyOnlyLyricsLight") {
+    applyStylingPreset(onlyLyricsLightStylingPreset);
+    return "light";
+  }
+
+  if (path === "presets.applyOnlyLyricsDark") {
+    applyStylingPreset(onlyLyricsDarkStylingPreset);
     return "dark";
   }
 
@@ -83,7 +99,8 @@ export const stylingDialkitConfig = {
   presets: {
     applyDefaultLight: { type: "action", label: "Default: light" },
     applyDefaultDark: { type: "action", label: "Default: dark" },
-    applyOnlyLyrics: { type: "action", label: "Only lyrics" },
+    applyOnlyLyricsLight: { type: "action", label: "Only lyrics: light" },
+    applyOnlyLyricsDark: { type: "action", label: "Only lyrics: dark" },
   },
   fontSize: slider(defaultLightStylingPreset.fontSize, 10, 40, 1),
   viewMode: {

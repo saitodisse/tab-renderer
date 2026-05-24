@@ -25,10 +25,24 @@ import "./App.css";
 
 function App() {
   const [pageTheme, setPageTheme] = useState<AppPageTheme>("light");
+  const [mobileControlsOpen, setMobileControlsOpen] = useState(false);
+  const [isMobileViewport, setIsMobileViewport] = useState(() =>
+    typeof window !== "undefined"
+      ? window.matchMedia("(max-width: 900px)").matches
+      : false,
+  );
 
   useEffect(() => {
     document.documentElement.dataset.appTheme = pageTheme;
   }, [pageTheme]);
+
+  useEffect(() => {
+    const mediaQuery = window.matchMedia("(max-width: 900px)");
+    const syncViewport = () => setIsMobileViewport(mediaQuery.matches);
+    syncViewport();
+    mediaQuery.addEventListener("change", syncViewport);
+    return () => mediaQuery.removeEventListener("change", syncViewport);
+  }, []);
 
   const dial = useDialKit(TAB_STYLING_PANEL_NAME, stylingDialkitConfig, {
     onAction: (path) => {
@@ -41,19 +55,29 @@ function App() {
   return (
     <div className="app-layout">
       <main className="app-shell">
+        <section className="demo-panel" aria-label="Live demo">
+          <div className="tab-story-frame">
+            <StoryPanel caption="Live preview — interleaved pipeline, CSS chord offsets, and viewer preferences.">
+              <Tab body={tuaFlorBody} style={style} className="tab-demo-1" />
+            </StoryPanel>
+          </div>
+        </section>
+
         <header className="app-header">
           <div className="lib-hero-meta">
-            <p className="eyebrow">{LIB_NAME}</p>
+            <h1>{LIB_NAME}</h1>
             <p className="lib-badge">
               v{LIB_VERSION} · {LIB_LICENSE}
             </p>
           </div>
-          <h1>Open-source chord sheet parsing and rendering</h1>
+          <p className="lib-subtitle">
+            Open-source chord sheet parsing and rendering
+          </p>
           <p className="lede">
             {LIB_NAME} ships a headless core for parsing, transposition, and
             interleaved bar preparation, plus a React adapter with a styled{" "}
             <code>Tab</code> viewer and composable primitives for custom
-            layouts. The live demo below uses the shared{" "}
+            layouts. The live demo above uses the shared{" "}
             <code>tua-flor.txt</code> fixture — tweak every{" "}
             <code>TabStyleConfig</code> control in the panel on the right.
           </p>
@@ -112,17 +136,14 @@ function App() {
             </section>
           </div>
         </header>
-
-        <section className="demo-panel" aria-label="Live demo">
-          <div className="tab-story-frame">
-            <StoryPanel caption="Live preview — interleaved pipeline, CSS chord offsets, and viewer preferences.">
-              <Tab body={tuaFlorBody} style={style} className="tab-demo-1" />
-            </StoryPanel>
-          </div>
-        </section>
       </main>
 
-      <aside className="app-controls" aria-label="Style controls">
+      <aside
+        id="app-style-controls"
+        className={`app-controls${mobileControlsOpen ? " is-open" : ""}`}
+        aria-label="Style controls"
+        aria-hidden={isMobileViewport && !mobileControlsOpen}
+      >
         <DialRoot
           mode="inline"
           defaultOpen
@@ -130,6 +151,19 @@ function App() {
           productionEnabled
         />
       </aside>
+
+      <button
+        type="button"
+        className="app-controls-toggle"
+        aria-controls="app-style-controls"
+        aria-expanded={mobileControlsOpen}
+        aria-label={
+          mobileControlsOpen ? "Hide style controls" : "Show style controls"
+        }
+        onClick={() => setMobileControlsOpen((open) => !open)}
+      >
+        {mobileControlsOpen ? "×" : "Style"}
+      </button>
     </div>
   );
 }

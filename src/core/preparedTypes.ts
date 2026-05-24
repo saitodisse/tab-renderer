@@ -44,7 +44,7 @@ export const DEFAULT_TAB_STYLE: TabStyleConfig = {
   fontSize: 21,
   transposeNumber: 0,
   lineHeight: 0.184,
-  blockMarginRight: 0.6,
+  blockMarginRight: 0.575,
   chordHeight: 0.07,
   chordColor: "#5884fe",
   lyricColor: "#d1dff5",

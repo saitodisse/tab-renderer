@@ -38,6 +38,15 @@
 	gap: 12px;
 }
 
+.lib-subtitle {
+	margin: 0;
+	max-width: 68ch;
+	font-size: clamp(1.15rem, 2.2vw, 1.65rem);
+	line-height: 1.35;
+	letter-spacing: -0.02em;
+	color: var(--text);
+}
+
 .eyebrow {
 	text-transform: uppercase;
 	letter-spacing: 0.18em;
@@ -149,14 +158,18 @@ html[data-app-theme="dark"] .lib-button-primary {
 }
 
 .demo-panel {
-	max-width: 980px;
-	margin: 0 auto;
+	width: 100%;
+	margin: 0;
 	padding: 4px;
 	border: 1px solid var(--border);
 	border-radius: 6px;
 	box-shadow: var(--shadow);
 	backdrop-filter: blur(14px);
-	width: 100%;
+}
+
+.demo-panel .tab-story-frame {
+	max-width: none;
+	margin: 0;
 }
 
 .tab-demo-1 {
@@ -173,6 +186,10 @@ html[data-app-theme="dark"] .lib-button-primary {
 	background: var(--bg);
 }
 
+.app-controls-toggle {
+	display: none;
+}
+
 html[data-app-theme="light"] .demo-panel {
 	background: rgba(255, 255, 255, 0.72);
 }
@@ -186,9 +203,47 @@ html[data-app-theme="dark"] .demo-panel {
 		grid-template-columns: 1fr;
 	}
 
+	.app-controls-toggle {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		position: fixed;
+		right: 12px;
+		bottom: 12px;
+		z-index: 20;
+		min-width: 44px;
+		height: 44px;
+		padding: 0 12px;
+		border: 1px solid var(--border);
+		border-radius: 999px;
+		background: var(--bg);
+		color: var(--text-h);
+		font-family: var(--sans);
+		font-size: 0.8rem;
+		font-weight: 600;
+		line-height: 1;
+		box-shadow: var(--shadow);
+		cursor: pointer;
+		transition:
+			border-color 0.15s ease,
+			background 0.15s ease,
+			transform 0.15s ease;
+	}
+
+	.app-controls-toggle:hover {
+		border-color: var(--accent-border);
+		background: var(--accent-bg);
+	}
+
+	.app-controls-toggle[aria-expanded="true"] {
+		font-size: 1.25rem;
+		padding: 0;
+		width: 44px;
+	}
+
 	.app-controls {
 		position: fixed;
-		right: 0;
+		right: -280px;
 		bottom: 0;
 		top: auto;
 		width: 280px;
@@ -198,5 +253,16 @@ html[data-app-theme="dark"] .demo-panel {
 		border-radius: 16px 0 0 0;
 		box-shadow: var(--shadow);
 		z-index: 10;
+		overflow: visible;
+		transform: none;
+		transition: right 0.2s ease;
+		pointer-events: none;
+		visibility: hidden;
+	}
+
+	.app-controls.is-open {
+		right: 0;
+		pointer-events: auto;
+		visibility: visible;
 	}
 }
