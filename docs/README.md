@@ -4,3 +4,16 @@
 - `docs/rfc/` contains architecture decisions.
 - `docs/plans/` contains executable implementation plans.
 
+## Shipped: styled viewer (v0.2.0)
+
+| Document                                                                                        | Description                                                              |
+| ----------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------ |
+| [PRD 0002 — Styled viewer pipeline](./prd/0002-styled-viewer-pipeline.md)                       | Product goals, `TabStyleConfig`, view/display modes, acceptance criteria |
+| [RFC 0002 — Interleaved bars](./rfc/0002-interleaved-bars-and-tab-style-config.md)              | Pipeline phases, AST, CSS trick, public API                              |
+| [Plan — Styled viewer implementation](./plans/2026-05-23-styled-viewer-pipeline-and-stories.md) | Phased tasks from core port to Storybook `07 Styling`                    |
+
+Bootstrap docs (v0.1):
+
+- [PRD 0001](./prd/0001-tab-renderer-library.md)
+- [RFC 0001](./rfc/0001-package-structure-and-public-api.md)
+- [Plan — Bootstrap](./plans/2026-05-23-bootstrap-and-core-slice.md)

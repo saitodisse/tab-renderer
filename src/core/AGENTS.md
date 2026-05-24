@@ -4,24 +4,26 @@ The core is the framework-agnostic heart of the library.
 
 ## Responsibilities
 
-- Parse raw `body` text into sections.
-- Normalize the content into the public AST.
-- Emit explicit token types:
-  - `ChordToken`
-  - `LyricToken`
-  - `SpaceToken`
-- Keep the result stable and predictable for downstream renderers.
+- **`prepareSong()`** — primary pipeline for the styled viewer: split sections → pair lines → extract chords → transpose → interleaved `barList`.
+- **`transform()`** — legacy per-line token AST (`Song` → `Section` → `Line` → `ChordToken` / `LyricToken` / `SpaceToken`) for composable primitives and teaching stories.
+- Export shared types: `PreparedSong`, `TabStyleConfig`, `DEFAULT_TAB_STYLE`, parser/transposer types.
+
+## Layout
+
+- `src/core/parser/` — `splitSections`, pairer, chord extractor
+- `src/core/transposer/` — semitone transpose (`@tonaljs/tonal`), `chordToText`
+- `src/core/renderer/` — `generateBarList`
+- `src/core/prepareSong.ts` — orchestrator
+- `src/core/transform.ts` — token AST
 
 ## Constraints
 
 - No React imports.
 - No DOM assumptions.
-- No layout measurement or rendering hints.
 - Prefer pure functions and small transformation steps.
 
 ## Testing
 
-- Add or update tests in `src/core/__tests__/`.
-- Use the shared fixture body when possible so the core stays aligned with the public demo.
-- Validate token shape, section shape, and normalization behavior, not implementation details.
-
+- Tests in `src/core/__tests__/`.
+- Use `src/test/stubs/tua-flor.txt` for integration-style coverage.
+- Cover `prepareSong`, `generateBarList`, and `transform` behavior.

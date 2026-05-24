@@ -1,0 +1,60 @@
+import type { BarsList, BarsListItem } from "./parser/types";
+
+export type { BarsListItem, ChordItem, SimpleChord } from "./parser/types";
+
+/** Alias for interleaved render segments (Achordex bar list items). */
+export type BarSegment = BarsListItem;
+
+export type PreparedSection = {
+  title: string | null;
+  barList: BarsList;
+};
+
+export type PreparedSong = {
+  body: string;
+  sections: PreparedSection[];
+};
+
+export type ViewMode = "o" | "e";
+
+export type DisplayMode = "chords" | "lyrics" | "both";
+
+export type TabStyleConfig = {
+  transposeNumber: number;
+  fontSize: number;
+  lineHeight: number;
+  blockMarginRight: number;
+  chordHeight: number;
+  contentMarginRightPx: number;
+  viewMode: ViewMode;
+  displayMode: DisplayMode;
+  chordColor: string;
+  lyricColor: string;
+  backgroundColor: string;
+};
+
+export type PrepareSongOptions = {
+  body: string;
+  transposeNumber?: number;
+  viewMode?: ViewMode;
+  beat?: number;
+};
+
+export const DEFAULT_TAB_STYLE: TabStyleConfig = {
+  fontSize: 21,
+  transposeNumber: 0,
+  lineHeight: 0.184,
+  blockMarginRight: 0.6,
+  chordHeight: 0.07,
+  chordColor: "#5884fe",
+  lyricColor: "#d1dff5",
+  backgroundColor: "#000000",
+  viewMode: "e",
+  displayMode: "both",
+  contentMarginRightPx: 0,
+};
+
+export function clampContentMarginRightPx(px: number): number {
+  if (px <= 0) return 0;
+  return Math.min(1000, Math.max(200, px));
+}

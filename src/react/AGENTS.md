@@ -11,7 +11,7 @@ The React layer renders the normalized AST exposed by the core.
   - `Tab.Line`
   - `Tab.Chord`
   - `Tab.Lyric`
-- Keep the adapter headless by default so consumers can style it.
+- `Tab` is the styled viewer (`prepareSong` + `TabStyleConfig`). Primitives remain headless for custom composition.
 
 ## Rules
 
@@ -22,12 +22,12 @@ The React layer renders the normalized AST exposed by the core.
 
 ## Storybook
 
-- `src/react/Tab.stories.tsx` is the canonical story for the package.
-- Use the shared `tua-flor.txt` fixture for representative rendering examples.
+- `src/react/stories/` is the canonical Storybook surface for the package.
+- Stories are ordered `01 Core` → `07 Styling`, from raw `body` text through `TabStyleConfig` (single full-config story with all controls).
+- Use `tua-flor.txt` via `story-tua-flor.ts` helpers across teaching stories `01`–`07`.
 
 ## Testing
 
 - Put adapter tests in `src/react/__tests__/`.
 - Verify the adapter can render the real shared fixture.
 - Cover the public behavior, not just the internal JSX shape.
-

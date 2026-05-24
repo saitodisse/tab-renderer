@@ -8,11 +8,12 @@ Chord sheet rendering is currently tied to an application-specific stack. That m
 
 Build an open-source npm package that transforms raw chord sheet text into a normalized musical AST and renders it through a composable React adapter.
 
-## Non-Goals
+## Non-Goals (bootstrap scope)
 
 - Reproducing the entire existing application.
 - Shipping application-specific persistence, authentication, or routing.
-- Embedding opinionated visual styling into the public React API.
+
+> **Update:** [PRD 0002](./0002-styled-viewer-pipeline.md) adds a documented `TabStyleConfig` on the convenience `Tab` component for the Achordex-equivalent viewer. Composable primitives remain style-agnostic.
 
 ## Target Users
 
@@ -63,4 +64,3 @@ The React adapter exposes:
 - The React adapter can render a song from the AST.
 - Storybook contains representative stories for the core UI primitives.
 - Vitest covers at least the core transformation path and one React rendering path.
-
