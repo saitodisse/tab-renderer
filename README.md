@@ -1,5 +1,7 @@
 # tab-renderer
 
+**Live demo:** [tab-renderer-react.vercel.app](https://tab-renderer-react.vercel.app/)
+
 Open-source chord sheet rendering library with:
 
 - a headless core for parsing, transposition, and interleaved bar preparation
@@ -154,7 +156,11 @@ npm test
 npm run lint
 npm run build
 npm run build-storybook
+npm run build:site
+npm run preview:site
 ```
+
+The demo site is published at [tab-renderer-react.vercel.app](https://tab-renderer-react.vercel.app/).
 
 ## Documentation
 
