@@ -9,6 +9,7 @@ All notable changes to this project are documented in this file.
 - Replaced the legacy `transform()` pipeline with the explicit `parseTab()` headless core API and a richer parsed tab AST.
 - Removed the old public `Song`, `Section`, `Line`, and `Token` aliases in favor of the new parser and AST types.
 - Updated the React adapter, stories, README, and tests to consume the new parsed tab format directly.
+- Shared parser symbols and diagnostics now come from `achorde-musical-domain` instead of being duplicated locally.
 
 ## [0.2.0] - 2026-05-24
 

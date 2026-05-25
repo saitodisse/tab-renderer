@@ -76,6 +76,7 @@ const song = parseTab(body);
 ```
 
 Exported types include `ParsedTab`, `ParsedTabSection`, `ParsedTabLine`, `ParsedTabToken`, `PreparedSong`, `TabStyleConfig`, `DEFAULT_TAB_STYLE`, and `BarsListItem`.
+The shared parser and AST contracts come from `achorde-musical-domain`.
 
 ## React usage
 

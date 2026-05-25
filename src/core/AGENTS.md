@@ -7,6 +7,7 @@ The core is the framework-agnostic heart of the library.
 - **`parseTab()`** — primary headless parser: multiline body → `ParsedTab` → `ParsedTabSection` → `ParsedTabLine` → `ParsedTabToken`.
 - **`prepareSong()`** — internal styled-viewer pipeline: split sections → pair lines → extract chords → transpose → interleaved `barList`.
 - Export shared types: `ParsedTab`, `ParsedTabSection`, `ParsedTabLine`, `ParsedTabToken`, `PreparedSong`, `TabStyleConfig`, `DEFAULT_TAB_STYLE`, parser/transposer types.
+- Shared parser symbols and diagnostics come from `achorde-musical-domain`.
 
 ## Layout
 

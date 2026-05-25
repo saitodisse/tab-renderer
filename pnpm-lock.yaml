@@ -11,6 +11,9 @@ importers:
       '@tonaljs/tonal':
         specifier: ^4.10.0
         version: 4.10.0
+      achorde-musical-domain:
+        specifier: file:../achorde-musical-domain
+        version: file:../achorde-musical-domain
     devDependencies:
       '@chromatic-com/storybook':
         specifier: ^5.2.1
@@ -1340,6 +1343,9 @@ packages:
 
   '@webcontainer/env@1.1.1':
     resolution: {integrity: sha512-6aN99yL695Hi9SuIk1oC88l9o0gmxL1nGWWQ/kNy81HigJ0FoaoTXpytCj6ItzgyCEwA9kF1wixsTuv5cjsgng==}
+
+  achorde-musical-domain@file:../achorde-musical-domain:
+    resolution: {directory: ../achorde-musical-domain, type: directory}
 
   acorn-jsx@5.3.2:
     resolution: {integrity: sha512-rq9s+JNhf0IChjtDXxllJ7g41oZk5SlXtp0LHwyA5cejwn7vKmKp4pPri6YEePv2PU65sAsegbXtIinmDFDXgQ==}
@@ -3736,6 +3742,8 @@ snapshots:
       tinyrainbow: 3.1.0
 
   '@webcontainer/env@1.1.1': {}
+
+  achorde-musical-domain@file:../achorde-musical-domain: {}
 
   acorn-jsx@5.3.2(acorn@8.16.0):
     dependencies:
