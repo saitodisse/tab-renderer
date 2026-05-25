@@ -31,6 +31,9 @@ export type TabStyleConfig = {
   chordColor: string;
   lyricColor: string;
   backgroundColor: string;
+  sectionGap: number;
+  sectionTitleColor: string;
+  sectionTitleFontSize: number;
 };
 
 export type PrepareSongOptions = {
@@ -52,6 +55,9 @@ export const DEFAULT_TAB_STYLE: TabStyleConfig = {
   viewMode: "e",
   displayMode: "both",
   contentMarginRightPx: 0,
+  sectionGap: 24,
+  sectionTitleColor: "#8899aa",
+  sectionTitleFontSize: 14,
 };
 
 export function clampContentMarginRightPx(px: number): number {

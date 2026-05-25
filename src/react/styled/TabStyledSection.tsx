@@ -7,6 +7,9 @@ export type TabStyledSectionProps = {
   index: number;
   fontSize: number;
   lineHeight: number;
+  sectionGap: number;
+  sectionTitleColor: string;
+  sectionTitleFontSize: number;
 };
 
 export function TabStyledSection({
@@ -15,6 +18,9 @@ export function TabStyledSection({
   index,
   fontSize,
   lineHeight,
+  sectionGap,
+  sectionTitleColor,
+  sectionTitleFontSize,
 }: TabStyledSectionProps) {
   let isLastLineNoLyrics = false;
   if (nodes.length > 0) {
@@ -24,8 +30,22 @@ export function TabStyledSection({
   const scaleFactor = lineHeight * 0.55 + 0.03;
 
   return (
-    <div className="tab-styled-section" data-tab-section={index}>
-      {title ? <h2 className="tab-styled-section-title">{title}</h2> : null}
+    <div
+      className="tab-styled-section"
+      data-tab-section={index}
+      style={{ marginTop: index > 0 ? `${sectionGap}px` : undefined }}
+    >
+      {title ? (
+        <h2
+          className="tab-styled-section-title"
+          style={{
+            color: sectionTitleColor,
+            fontSize: `${sectionTitleFontSize}px`,
+          }}
+        >
+          {title}
+        </h2>
+      ) : null}
       <div
         className="tab-styled-section-body"
         style={{

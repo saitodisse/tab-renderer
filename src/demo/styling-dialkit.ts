@@ -26,6 +26,9 @@ export const defaultLightStylingPreset: TabStyleConfig = {
   blockMarginRight: 0.575,
   displayMode: "both",
   contentMarginRightPx: 0,
+  sectionGap: 24,
+  sectionTitleColor: "#556677",
+  sectionTitleFontSize: 14,
 };
 
 export const defaultDarkStylingPreset: TabStyleConfig = {
@@ -41,6 +44,8 @@ const onlyLyricsStylingBase = {
   viewMode: "o" as const,
   transposeNumber: 0,
   contentMarginRightPx: 0,
+  sectionGap: 24,
+  sectionTitleFontSize: 14,
 };
 
 export const onlyLyricsLightStylingPreset: TabStyleConfig = {
@@ -48,6 +53,7 @@ export const onlyLyricsLightStylingPreset: TabStyleConfig = {
   chordColor: "#1d57f7",
   lyricColor: "#1b2027",
   backgroundColor: "#ffffff",
+  sectionTitleColor: "#556677",
 };
 
 export const onlyLyricsDarkStylingPreset: TabStyleConfig = {
@@ -55,6 +61,7 @@ export const onlyLyricsDarkStylingPreset: TabStyleConfig = {
   chordColor: "#5884fe",
   lyricColor: "#d1dff5",
   backgroundColor: "#000000",
+  sectionTitleColor: "#8899aa",
 };
 
 export function applyStylingPreset(preset: TabStyleConfig) {
@@ -139,6 +146,14 @@ export const stylingDialkitConfig = {
     1000,
     20,
   ),
+  sectionGap: slider(defaultLightStylingPreset.sectionGap, 0, 80, 1),
+  sectionTitleColor: defaultLightStylingPreset.sectionTitleColor,
+  sectionTitleFontSize: slider(
+    defaultLightStylingPreset.sectionTitleFontSize,
+    8,
+    32,
+    1,
+  ),
 } satisfies DialConfig;
 
 export function stylingDialToTabStyle(
@@ -156,5 +171,8 @@ export function stylingDialToTabStyle(
     viewMode: dial.viewMode as TabStyleConfig["viewMode"],
     transposeNumber: dial.transposeNumber,
     contentMarginRightPx: dial.contentMarginRightPx,
+    sectionGap: dial.sectionGap,
+    sectionTitleColor: dial.sectionTitleColor,
+    sectionTitleFontSize: dial.sectionTitleFontSize,
   };
 }

@@ -41,8 +41,8 @@ This repository publishes `tab-renderer`, an open-source library for chord sheet
 
 The following projects depend on published releases of this package:
 
-| Project | Path | Dependency location |
-| ------- | ---- | ------------------- |
+| Project | Path                    | Dependency location                         |
+| ------- | ----------------------- | ------------------------------------------- |
 | ac15    | `/home/saito/_git/ac15` | `packages/ui/package.json` → `tab-renderer` |
 
 After publishing a new version:
@@ -52,4 +52,3 @@ After publishing a new version:
 3. Run `pnpm install` to regenerate the lockfile.
 4. Run tests and build to confirm compatibility.
 5. Commit and push the downstream update.
-

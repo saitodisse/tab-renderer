@@ -41,6 +41,9 @@ function TabComponent({ body, className, style: stylePartial }: TabProps) {
           index={index}
           fontSize={style.fontSize}
           lineHeight={style.lineHeight}
+          sectionGap={style.sectionGap}
+          sectionTitleColor={style.sectionTitleColor}
+          sectionTitleFontSize={style.sectionTitleFontSize}
         />
       ))}
     </TabStyledContainer>
