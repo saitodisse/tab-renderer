@@ -1,7 +1,7 @@
 {
   "name": "tab-renderer",
   "private": false,
-  "version": "0.3.0",
+  "version": "0.3.1",
   "homepage": "https://tab-renderer-react.vercel.app/",
   "repository": {
     "type": "git",
@@ -27,7 +27,7 @@
   },
   "dependencies": {
     "@tonaljs/tonal": "^4.10.0",
-    "achorde-musical-domain": "file:../achorde-musical-domain"
+    "achorde-musical-domain": "^0.1.0"
   },
   "peerDependencies": {
     "react": "^18.0.0 || ^19.0.0",
