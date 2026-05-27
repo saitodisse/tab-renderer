@@ -17,3 +17,11 @@ Bootstrap docs (v0.1):
 - [PRD 0001](./prd/0001-tab-renderer-library.md)
 - [RFC 0001](./rfc/0001-package-structure-and-public-api.md)
 - [Plan — Bootstrap](./plans/2026-05-23-bootstrap-and-core-slice.md)
+
+## Phase 1: strict parser (chord-engine retirement)
+
+| Document                                                                                                              | Description                                                     |
+| --------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------- |
+| [AC15 parent plan](../../ac15/docs/plans/2026-05-27-fase1-parser-migracao-tab-renderer.md)                            | Product decisions, AC15 integration phases, viewer/diagram flow |
+| [Plan — Strict parse and transpose](./plans/2026-05-27-fase1-strict-parse-and-transpose.md)                           | `parseTab` rewrite, tests, transposition API                    |
+| [achorde-musical-domain contracts](../../achorde-musical-domain/docs/plans/2026-05-27-fase1-strict-line-contracts.md) | Four line kinds, error diagnostics, deprecate `ChordChartAst`   |
