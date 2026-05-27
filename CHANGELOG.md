@@ -2,6 +2,17 @@
 
 All notable changes to this project are documented in this file.
 
+## [0.4.0] - 2026-05-27
+
+### Added
+
+- `parseTab()` now exposes `chordsFound`, a stable de-duplicated list of chord symbols found in the parsed tab body.
+- The core AST keeps the chord discovery result alongside the existing section/line/token tree so downstream consumers can resolve chord panels without re-scanning the text.
+
+### Changed
+
+- `tab-renderer` now depends on `achorde-musical-domain` `^0.2.0` to share the expanded parsed-tab contract.
+
 ## [0.3.0] - 2026-05-24
 
 ### Changed

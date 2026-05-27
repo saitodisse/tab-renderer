@@ -176,6 +176,30 @@ function warnAmbiguousLine(raw: string, lineNumber: number, diagnostics: ParseDi
   });
 }
 
+function collectFoundChords(sections: ParsedTabSection[]): ReadonlyArray<string> {
+  const seen = new Set<string>();
+  const chordsFound: string[] = [];
+
+  for (const section of sections) {
+    for (const line of section.lines) {
+      for (const token of line.tokens) {
+        if (token.kind !== "ChordToken" || !token.chord || token.chord.kind !== "chord") {
+          continue;
+        }
+
+        if (seen.has(token.chord.text)) {
+          continue;
+        }
+
+        seen.add(token.chord.text);
+        chordsFound.push(token.chord.text);
+      }
+    }
+  }
+
+  return chordsFound;
+}
+
 export function parseTab(body: string): ParsedTab {
   const diagnostics: ParseDiagnostic[] = [];
   const sections: ParsedTabSection[] = [];
@@ -279,5 +303,6 @@ export function parseTab(body: string): ParsedTab {
     diagnostics,
     parserVersion: TAB_RENDERER_PARSER_VERSION,
     astVersion: TAB_RENDERER_AST_VERSION,
+    chordsFound: collectFoundChords(sections),
   };
 }

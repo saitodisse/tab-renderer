@@ -22,6 +22,8 @@ describe("parseTab", () => {
         ),
       ),
     ).toBe(true);
+    expect(result.chordsFound.length).toBeGreaterThan(0);
+    expect(result.chordsFound[0]).toBe("Em7");
     expect(result.diagnostics).toEqual([]);
   });
 
@@ -32,5 +34,6 @@ describe("parseTab", () => {
     expect(result.sections[0]?.title).toBe("Verse");
     expect(result.sections[0]?.lines[0]?.text).toBe("C");
     expect(result.sections[0]?.lines[1]?.text).toBe("Line");
+    expect(result.chordsFound).toEqual(["C"]);
   });
 });
